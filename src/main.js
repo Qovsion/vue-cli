@@ -4,7 +4,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App.vue'
 // 导入路由
 import router from '@/router'
+import axios from '@/axios'
 
+Vue.prototype.$http = axios
+// Vue.prototype.$store = store
 Vue.use(ElementUI)
 
 new Vue({
