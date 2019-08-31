@@ -8,6 +8,9 @@ import Home from '../views/home/home.vue'
 import Notfun from '../views/404/index.vue'
 import Welcome from '../views/welcome/index.vue'
 import store from '@/store'
+import Article from '@/views/article'
+import Image from '@/views/image'
+import Publish from '@/views/publish'
 // 使用路由
 Vue.use(VueRouter)
 
@@ -19,7 +22,10 @@ const router = new VueRouter({
       path: '/',
       component: Home,
       children: [
-        { path: '/', name: 'welcome', component: Welcome }
+        { path: '/', name: 'welcome', component: Welcome },
+        { path: '/article', name: 'article', component: Article },
+        { path: '/image', name: 'image', component: Image },
+        { path: '/publish', name: 'publish', component: Publish }
       ]
     },
     { path: '/login', name: 'login', component: Login },

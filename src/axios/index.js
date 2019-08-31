@@ -1,7 +1,17 @@
 // 负责 配置axios  提供一个配置好的AXIOS即可。
 import axios from 'axios'
 import store from '@/store'
-import router from '@/router'
+import JSONBIG from 'json-bigint'
+// 默认配置  转换响应时请求数据
+axios.defaults.transformResponse = [data => {
+  // 对data（后台的原始数据）进行转换
+  // 响应无内容处理
+  try {
+    return JSONBIG.parse(data)
+  } catch (error) {
+    return data
+  }
+}]
 // 默认配置  基准地址
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'
 
@@ -27,7 +37,7 @@ axios.interceptors.response.use(res => res, err => {
     // 1. 跳转到登录页面  hash = #/login  使用 location
     // window.location.hash = '#/login'
     // 2. 使用路由来进行跳转
-    router.push('/login')
+    this.$router.push('/login')
   }
   return Promise.reject(err)
 })

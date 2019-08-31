@@ -4,7 +4,7 @@
       <div class="logo" :class="{'logomin':isTog}"></div>
       <!-- element自定义导航 -->
         <el-menu
-          default-active="1"
+          :default-active="this.$route.path"
           class="el-menu-vertical-demo my-el-col"
           background-color="#002033"
           :collapse="isTog"
@@ -59,7 +59,7 @@
         <!-- 下拉菜单 -->
         <el-dropdown class="my-dropdown">
           <span class="el-dropdown-link">
-             <img class="avatar" :src="avatar" alt />
+             <img class="avatarImg" :src="avatar" alt />
             <span class="username"> {{username}}</span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
@@ -90,6 +90,7 @@ export default {
     }
   },
   created () {
+    console.log(this.$route)
     this.avatar = store.getUser().photo
     this.username = store.getUser().name
   },
@@ -145,8 +146,9 @@ export default {
     }
     .my-dropdown {
       float: right;
-      .avatar {
+      .avatarImg {
         width: 36px;
+        height:36px;
         vertical-align: middle;
       }
       .username {

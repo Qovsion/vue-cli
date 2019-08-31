@@ -42,7 +42,7 @@ export default {
     }
     return {
       loginForm: {
-        mobile: '18888888888',
+        mobile: '13911111111',
         code: '246810'
       },
       // 校验规则对象
@@ -87,6 +87,7 @@ export default {
       })
     }
   }
+
 }
 </script>
 
