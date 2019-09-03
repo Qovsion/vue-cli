@@ -13,8 +13,8 @@
         <el-button type="success" @click="addImg" size="small" style="float:right">添加素材</el-button>
       </div>
       <div class="img_list">
-        <div class="img_item" v-for="item in images" :key="item.id">
-          <img :src="item.url" alt />
+        <div class="img_item"  v-for="item in images" :key="item.id" >
+          <img :src="item.url" />
           <div class="option">
             <span class="el-icon-star-off" @click="toggleCollect(item)" :class="{red:item.is_collected}"></span>
             <span class="el-icon-delete" @click="delImg(item.id)"></span>
@@ -66,6 +66,7 @@ export default {
       images: [],
       total: 0,
       toggleVisible: false,
+      selectedImageUrl: null,
       headers: {
         Authorization: 'Bearer ' + store.getUser().token
       }
@@ -75,6 +76,7 @@ export default {
     this.getImage()
   },
   methods: {
+
     // 上传图片成功后 执行操作
     handleAvatarSuccess (res) {
       this.$message.success('上传图片成功')
@@ -135,6 +137,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
 .img_list {
   margin-top: 20px;
   .img_item {
@@ -145,10 +148,12 @@ export default {
     display: inline-block;
     margin-left: 30px;
     margin-bottom: 20px;
+
     img {
       width: 100%;
       height: 100%;
       display: block;
+
     }
     .option {
       width: 100%;
